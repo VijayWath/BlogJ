@@ -26,3 +26,9 @@
       </div>
     </div>
   </nav>
+
+  <% if (locals.error) { %>
+    <div class="alert alert-primary" role="alert">
+      <%= locals.error  %>
+    </div>
+  <% } %>
