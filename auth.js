@@ -8,7 +8,7 @@ const secrete = process.env.JWT_SECRETE;
 function createToken(user) {
   const payload = {
     name:user.fullname,
-    _id: user._id,
+    id: user.id,
     email: user.email,
     profileImageUrl: user.profileimageurl,
     role: user.role,
