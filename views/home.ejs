@@ -1,12 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <%- include('./partials/headder') %>
-    <title>Home Page</title>
-  </head>
-  <body>
-    <%- include('./partials/nav') %>
-    <%= JSON.stringify(user) %>
-    <%- include('./partials/scripts') %>
-  </body>
+<head>
+  <%- include('./partials/headder') %>
+  <title>Home Page</title>
+</head>
+<body>
+  <%- include('./partials/nav') %>
+  <div class="container mt-3">
+    <div class="row">
+      <% blogs.forEach(blog => { %>
+        <div class="col-md-4 mb-3">
+          <div class="card" style="width: 18rem;">
+            <img src="<%= blog.coverimageurl %>" class="card-img-top" style="height: 18rem;" alt="...">
+            <div class="card-body">
+              <h5 class="card-title"><%= blog.title %></h5>
+              <p class="card-text"><%= blog.body.split(' ').slice(0, 5).join(' ') + (blog.body.split(' ').length > 20 ? '...' : '') %></p>
+              <a href="/blog/<%= blog.id %>" class="btn btn-primary">View</a>
+            </div>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+  </div>
+
+  <%- include('./partials/scripts') %>
+</body>
 </html>

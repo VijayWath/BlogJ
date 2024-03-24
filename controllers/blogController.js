@@ -3,8 +3,7 @@ import db from "../postgressSetup.js"
 async function handleAddBlog(req,res){
   const title = req.body.title
   const body = req.body.body
-  const ImagePath = req.file.path
-
+  const ImagePath = `/uploads/${req.file.filename}` 
   try {
     db.query("INSERT INTO blogs(title,body,coverImageUrl,createdByMail) VALUES($1,$2,$3,$4)",[title,body,ImagePath,req.user.email])
   } catch (error) {
